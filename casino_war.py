@@ -33,7 +33,12 @@ casino_wins=0
 max_bet_amount_stats=[]
 total_bet_amount_stats=[]
 current_amount_stats=[]
+extra_amount_pergame_stats=[]
 while len(cards_deck)>=35:
+    if sum(bet_amount_slots)>total_current_amount:
+        extra_amount_pergame_stats.append(sum(bet_amount_slots)-total_current_amount)
+    else:
+        extra_amount_pergame_stats.append(0)
     current_slot_card=[]
     for i in range(6):
         curr_card=cards_deck.pop(0)
@@ -80,7 +85,9 @@ while len(cards_deck)>=35:
     print("max_bet_amount :",max(bet_amount_slots))
     print("total_bet_amount :",sum(bet_amount_slots))
     print("current amount :",total_current_amount)
-    if (total_current_amount<=-1000 and sum(bet_amount_slots) >=4000) :
+    # if sum(bet_amount_slots)-total_current_amount > 17000:
+    #     break
+    if (total_current_amount <= -1000 and sum(bet_amount_slots) >=4000) :
         break
     # if total_current_amount >=21000 or total_current_amount <= sum(bet_amount_slots):
     #     bet_amount_slots = [500, 500, 500, 500, 500, 500]
@@ -89,15 +96,19 @@ while len(cards_deck)>=35:
 print(slots)
 print("slot wins",sum(slots))
 print("casino wins",casino_wins)
-
+print("\n")
 print("max bet amount stats")
 print(max_bet_amount_stats)
 print(max(max_bet_amount_stats))
-
+print("\n")
 print("total bet amount stats")
 print(total_bet_amount_stats)
 print(max(total_bet_amount_stats))
-
+print("\n")
+print("extra amount required per game stats")
+print(extra_amount_pergame_stats)
+print(max(extra_amount_pergame_stats) ,"sum : ",sum(extra_amount_pergame_stats))
+print("\n")
 print("current amount stats")
 print(current_amount_stats)
 print("max :",max(current_amount_stats),"min: ",min(current_amount_stats))
