@@ -23,7 +23,8 @@ print(cards_deck)
 print(len(cards_deck))
 for _ in range(3):
     random.shuffle(cards_deck)
-cards_deck.pop(0)
+# cards_deck.pop(0)
+cards_deck=cards_deck[12:]
 print(cards_deck)
 game_count=0
 Banker_win_count=0
@@ -174,25 +175,25 @@ print("Tie         =",Tie_count)
 betwins=0
 betlose=0
 total_bet_amount=0
-current_bet_amount=500
+current_bet_amount=50
 prev_result=results_bp_stats[0]
 bet_stats=[]
 current_bet_stats=[]
 for i in range(1,len(results_bp_stats)-9):
-    if results_bp_stats[i]==prev_result and results_bp_stats!="T":
+    if results_bp_stats[i]==prev_result and results_bp_stats[i]!="T":
         if results_bp_stats[i]=='B' and results_numbers_stats[i]==6:
             total_bet_amount+=current_bet_amount//2
-            current_bet_amount=500
+            current_bet_amount=50
         else:
             total_bet_amount+=current_bet_amount
-            current_bet_amount=500
+            current_bet_amount=50
         betwins+=1
     elif results_bp_stats[i]=='T':
         pass
     else:
         prev_result=results_bp_stats[i]
         total_bet_amount-=current_bet_amount
-        current_bet_amount=(current_bet_amount*2)
+        current_bet_amount=(current_bet_amount*3)
         if current_bet_amount>=10000 and total_bet_amount<=2000:
             current_bet_amount=current_bet_amount//2
         betlose+=1
