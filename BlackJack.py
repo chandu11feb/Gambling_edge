@@ -19,6 +19,7 @@ for i in range(1,11):
 print(cards_deck_dict)
 Running_count=0
 cards_left= no_of_decks*52
+cards_out_list=[]
 cards_out_in_shoe=0
 decks_out_in_shoe=0
 while True:
@@ -27,6 +28,8 @@ while True:
         break
     else:
         numbers_list=list(map(int,numbers_input.split()))
+        cards_out_list.extend(numbers_list)
+        print("Numbers List : ", *cards_out_list)
         print("Given Numbers :",numbers_list)
         cards_out_in_shoe+=len(numbers_list)
         for i in numbers_list:
