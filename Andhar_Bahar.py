@@ -29,6 +29,7 @@ for i in range(100):
     playing_cards_deck.extend(cards_deck)
     for _ in range(3):
         random.shuffle(playing_cards_deck)
+    playing_cards_deck=playing_cards_deck[26:]+playing_cards_deck[:26]
     face_card=playing_cards_deck.pop()
     face_card_number=int(face_card[-2:])
     Andhar_list=[]

@@ -75,6 +75,3 @@ for i in range(1, 37):
 returns_list.sort()
 list_counter=Counter(returns_list)
 print(list_counter)
-
-
-

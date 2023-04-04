@@ -36,7 +36,6 @@ current_amount_stats=[]
 while len(cards_deck)>=35:
     random.shuffle(cards_deck)
     temp_first_card=cards_deck.pop(0)
-    cards_deck.append()
     current_slot_card=[]
     for i in range(6):
         curr_card=cards_deck.pop(0)

@@ -28,13 +28,14 @@ print(cards_deck)
 game_number=1
 slots=[0,0,0,0,0,0]
 bet_amount_slots=[500,500,500,500,500,500]
-total_current_amount=3000
+total_current_amount=20000
 casino_wins=0
 max_bet_amount_stats=[]
 total_bet_amount_stats=[]
 current_amount_stats=[]
 extra_amount_pergame_stats=[]
-while len(cards_deck)>=35:
+
+while len(cards_deck)>=104:
     if sum(bet_amount_slots)>total_current_amount:
         extra_amount_pergame_stats.append(sum(bet_amount_slots)-total_current_amount)
     else:
@@ -56,7 +57,7 @@ while len(cards_deck)>=35:
             if bet_amount_slots[i]*2 >=10000:
                 pass
             else:
-                bet_amount_slots[i] = bet_amount_slots[i] * 2
+                bet_amount_slots[i] = (bet_amount_slots[i] * 2)
         else:
             extra_current_card=cards_deck.pop(0)
             extra_current_card_number=int(extra_current_card[-2:])
@@ -89,6 +90,8 @@ while len(cards_deck)>=35:
     #     break
     if (total_current_amount <= -1000 and sum(bet_amount_slots) >=4000) :
         break
+    # if total_current_amount>=60000:
+    #     break
     # if total_current_amount >=21000 or total_current_amount <= sum(bet_amount_slots):
     #     bet_amount_slots = [500, 500, 500, 500, 500, 500]
 
