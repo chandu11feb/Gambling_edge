@@ -42,7 +42,9 @@ nofc_deck=52
 pair_stats=[]
 results_bp_stats=[]
 results_numbers_stats=[]
-while len(cards_deck)>=102:
+while len(cards_deck)>=100:
+    # cards_deck.pop(0)
+    # cards_deck.pop(0)
     prev_running_count1=running_count1
     prev_running_count2=running_count2
     game_count+=1
@@ -87,26 +89,35 @@ while len(cards_deck)>=102:
     if int(x[-1]) == 0:
         running_count2 += 1
     Banker.append(x)
-    if cards_sum(Player)<=5:
-        x = cards_deck.pop(0)
-        if int(x[-1]) < 5:
-            running_count1 -= 1
-        elif int(x[-1]) > 5:
-            running_count1 += 1
+    # if cards_sum(Player)<=5:
+    #     x = cards_deck.pop(0)
+    #     if int(x[-1]) < 5:
+    #         running_count1 -= 1
+    #     elif int(x[-1]) > 5:
+    #         running_count1 += 1
+    #
+    #     if int(x[-1]) == 0:
+    #         running_count2 += 1
+    #     Player.append(x)
+    # if cards_sum(Banker)<=5:
+    #     x = cards_deck.pop(0)
+    #     if int(x[-1]) < 5:
+    #         running_count1 -= 1
+    #     elif int(x[-1]) > 5:
+    #         running_count1 += 1
+    #
+    #     if int(x[-1]) == 0:
+    #         running_count2 += 1
+    #     Banker.append(x)
+    if cards_sum(Player) <= 7 and cards_sum(Banker) <= 7:
+        if cards_sum(Player) <= 5:
+            x = cards_deck.pop(0)
 
-        if int(x[-1]) == 0:
-            running_count2 += 1
-        Player.append(x)
-    if cards_sum(Banker)<=5:
-        x = cards_deck.pop(0)
-        if int(x[-1]) < 5:
-            running_count1 -= 1
-        elif int(x[-1]) > 5:
-            running_count1 += 1
+            Player.append(x)
+        if cards_sum(Banker) <= 5:
+            x = cards_deck.pop(0)
 
-        if int(x[-1]) == 0:
-            running_count2 += 1
-        Banker.append(x)
+            Banker.append(x)
     Banker_sum=cards_sum(Banker)
     Banker_sum_list.append(Banker_sum)
     Player_sum=cards_sum(Player)
@@ -175,25 +186,25 @@ print("Tie         =",Tie_count)
 betwins=0
 betlose=0
 total_bet_amount=0
-current_bet_amount=50
+current_bet_amount=100
 prev_result=results_bp_stats[0]
 bet_stats=[]
 current_bet_stats=[]
-for i in range(1,len(results_bp_stats)-9):
+for i in range(1,len(results_bp_stats)-1):
     if results_bp_stats[i]==prev_result and results_bp_stats[i]!="T":
         if results_bp_stats[i]=='B' and results_numbers_stats[i]==6:
             total_bet_amount+=current_bet_amount//2
-            current_bet_amount=50
+            current_bet_amount=100
         else:
             total_bet_amount+=current_bet_amount
-            current_bet_amount=50
+            current_bet_amount=100
         betwins+=1
     elif results_bp_stats[i]=='T':
         pass
     else:
         prev_result=results_bp_stats[i]
         total_bet_amount-=current_bet_amount
-        current_bet_amount=(current_bet_amount*2)
+        current_bet_amount=(current_bet_amount*2)+100
         if current_bet_amount>=10000 and total_bet_amount<=2000:
             current_bet_amount=current_bet_amount//2
         betlose+=1
